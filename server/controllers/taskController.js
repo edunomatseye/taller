@@ -58,5 +58,19 @@ export function getTask(req, res) {
     return res.status(404).json({ error: "Task not found" });
   }
 
-  res.status(204).json(task);
+  res.json(task);
+}
+
+export function getTaskByTitle(req, res) {
+  const searchTitle = req.query.title;
+
+  if (!searchTitle || typeof searchTitle !== "string") {
+    return res.status(400).json({ error: "Title query parameter is required" });
+  }
+
+  const matchingTasks = tasks.filter((task) =>
+    task.title.toLowerCase().includes(searchTitle.toLowerCase())
+  );
+
+  res.json(matchingTasks);
 }
