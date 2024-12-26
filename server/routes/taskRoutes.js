@@ -7,6 +7,6 @@ router.get("/items", taskController.getAllTasks);
 router.post("/items", taskController.createTask);
 router.get("/items/:id", taskController.getTask);
 router.delete("/items/:id", taskController.deleteTask);
-router.get("/search", taskController.getTaskByTitle);
+router.get("/items:title", taskController.getTaskByTitle);
 
 export default router;
